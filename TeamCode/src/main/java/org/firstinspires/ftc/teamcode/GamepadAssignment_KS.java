@@ -17,7 +17,12 @@ public class GamepadAssignment_KS extends OpMode {
         double sideSpeed = -gamepad1.right_stick_y / 2.0;
         //turbo mode
         if(!gamepad1.a) {
-            speedForward *= 0.5;
+            speedForward *= 2;
+        }
+        //crazy mode code
+        if (gamepad1.a) {
+            speedForward = gamepad1.left_stick_x;
+            sideSpeed = gamepad1.left_stick_y;
         }
         //left stick controls
         telemetry.addData("Left stick x", gamepad1.left_stick_x);
@@ -43,11 +48,6 @@ public class GamepadAssignment_KS extends OpMode {
         }
         if (gamepad1.right_stick_y < -0.5) {
             telemetry.addData("Right stick", "is negative and large");
-        }
-        //crazy mode code
-        if (gamepad1.a) {
-            speedForward = gamepad1.left_stick_x;
-            sideSpeed = gamepad1.left_stick_y;
         }
     }
 }
