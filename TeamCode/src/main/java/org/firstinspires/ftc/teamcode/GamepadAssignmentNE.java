@@ -1,12 +1,18 @@
 package org.firstinspires.ftc.teamcode;
-
+import com.acmerobotics.dashboard.FtcDashboard;
+import com.acmerobotics.dashboard.telemetry.MultipleTelemetry;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-
+import com.qualcomm.robotcore.hardware.DcMotor;
 @TeleOp()
-public class GamepadAssignment extends OpMode {
+public class GamepadAssignmentNE extends OpMode {
+    private DcMotor motor1;
     @Override
     public void init() {
+        FtcDashboard dashboard = FtcDashboard.getInstance();
+        telemetry = new MultipleTelemetry(telemetry, dashboard.getTelemetry());
+        motor1  = hardwareMap.get(DcMotor.class, "motor1");
+
     }
 
     @Override
@@ -15,8 +21,12 @@ public class GamepadAssignment extends OpMode {
         double speedForward = -gamepad1.left_stick_y / 2.0;
         double sideSpeed = -gamepad1.right_stick_y / 2.0;
         //turbo mode
-        if(!gamepad1.a) {
+        if(gamepad1.a) {
             speedForward *=2;
+        }
+        //if the driver presses b than run motor 1
+        if(gamepad1.b) {
+            motor1.setpower(1);
         }
         if (gamepad1.a) {
             speedForward = gamepad1.left_stick_x;
