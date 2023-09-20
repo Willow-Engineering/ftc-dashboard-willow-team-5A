@@ -26,7 +26,7 @@ public class GamepadAssignmentNE extends OpMode {
         }
         //if the driver presses b than run motor 1
         if(gamepad1.b) {
-            motor1.setpower(1);
+            motor1.setPower(1);
         }
         if (gamepad1.a) {
             speedForward = gamepad1.left_stick_x;
