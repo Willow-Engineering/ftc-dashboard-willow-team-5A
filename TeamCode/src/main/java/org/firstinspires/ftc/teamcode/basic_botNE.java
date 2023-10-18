@@ -26,7 +26,7 @@ public class basic_botNE extends LinearOpMode {
 
     private DcMotorEx arm = null;
     public static int left_claw_open = 50;
-    private Servo claw;
+    private Servo leftClaw;
     private Gyroscope imu;
     private DcMotor leftmotor;
     private DcMotor rightmotor;
@@ -87,7 +87,7 @@ public class basic_botNE extends LinearOpMode {
                 arm.setVelocity(200);
             }
             if(gamepad1.b){
-                claw.setPosition(left_claw_open);
+                leftClaw.setPosition(left_claw_open);
                 arm.setTargetPosition(0);
                 arm.setTargetPosition(300);
                 arm.setVelocity(200);
