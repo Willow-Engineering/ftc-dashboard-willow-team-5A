@@ -2,6 +2,7 @@
 
 package org.firstinspires.ftc.teamcode;
 
+import com.acmerobotics.dashboard.config.Config;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
@@ -15,6 +16,7 @@ import com.qualcomm.robotcore.util.Range;
 
 @TeleOp(name="basic_bot")
 //@Disabled
+@Config
 public class basic_botNE extends LinearOpMode {
 
     // Declare OpMode members.
@@ -23,6 +25,7 @@ public class basic_botNE extends LinearOpMode {
     private DcMotor rightDrive = null;
 
     private DcMotorEx arm = null;
+    public static int left_claw_open = 50;
     private Servo claw;
     private Gyroscope imu;
     private DcMotor leftmotor;
@@ -84,6 +87,7 @@ public class basic_botNE extends LinearOpMode {
                 arm.setVelocity(200);
             }
             if(gamepad1.b){
+                claw.setPosition(left_claw_open);
                 arm.setTargetPosition(0);
                 arm.setTargetPosition(300);
                 arm.setVelocity(200);
