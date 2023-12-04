@@ -12,7 +12,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
 @TeleOp
-
+@Config
 public class ArmControlNE extends LinearOpMode {
     private DcMotor arm;
     private Servo claw;
@@ -30,14 +30,14 @@ public class ArmControlNE extends LinearOpMode {
 
     @Override
     public void runOpMode() {
-        arm = hardwareMap.get(DcMotor.class, "arm");
+        arm = hardwareMap.get(DcMotor.class, "arm_drive");
         claw = hardwareMap.get(Servo.class, "claw");
         imu = hardwareMap.get(Gyroscope.class, "imu");
         leftmotor = hardwareMap.get(DcMotor.class, "leftmotor");
         rightmotor = hardwareMap.get(DcMotor.class, "rightmotor");
         touch = hardwareMap.get(DigitalChannel.class, "touch");
 
-        int minPostion = 0;
+        int minPosition = 0;
         int maxPosition = (int)(COUNTS_PER_DEGREE *45);
 
         waitForStart();
